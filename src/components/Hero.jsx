@@ -43,7 +43,7 @@ export default function Hero() {
       >
         {/* Semua konten berada di dalam div ini */}
         <div className="flex flex-col items-center text-stone-800">
-          <motion.p variants={itemVariants} className="font-body text-lg">
+          <motion.p variants={itemVariants} className="font-display text-4xl md:text-3xl text-lg">
             Bismillahirrahmanirrahim<br/>
             Assalamu'alaikum Warahmatullahi Wabarakatuh
           </motion.p>
@@ -66,8 +66,8 @@ export default function Hero() {
             </p>
           </motion.div>
           
-          <motion.p variants={itemVariants} className="font-script text-6xl my-1 text-stone-700">
-            Dengan
+          <motion.p variants={itemVariants} className="font-script text-4xl my-1 text-stone-700">
+            &
           </motion.p>
           
           {/* Foto & Nama Mempelai Pria */}

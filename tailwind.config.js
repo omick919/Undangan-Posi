@@ -1,22 +1,19 @@
-import Hero from './src/components/Hero';
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
   content: [
-    './index.html',
-    './src/**/*.{js,jsx,ts,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Tangerine"', 'cursive'],
-        arabic: ['"Amiri"', 'serif'],
+        // Untuk teks biasa (serif)
+        'body': ['Amiri', 'serif'], 
+        
+        // Untuk judul (cursive/script)
+        'title': ['Tangerine', 'cursive'],
       },
-      backgroundImage: {
-        'leaf-pattern': "url('/src/assets/leaf-background.png')",
-      }
     },
   },
   plugins: [],
-};
+}

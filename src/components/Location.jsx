@@ -36,14 +36,14 @@ export default function Location() {
             <h3 className="text-2xl font-bold font-display text-gray-800 dark:text-white">
               Sudirman Grand Ballroom
             </h3>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">
+            <p className="mt-2 text-gray-600 font-body dark:text-gray-300">
               Jl. Jend. Sudirman No. 620, Dungus Cariang, Kec. Andir, Kota Bandung, Jawa Barat 40183
             </p>
             <a
               href={gmapsShareLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-6 w-full text-center px-6 py-3 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300"
+              className="inline-block mt-6 w-full text-center px-6 py-3 bg-pink-500 text-white font-semibold font-body rounded-full shadow-lg hover:bg-red-600 transition-colors duration-300"
             >
               Buka Peta
             </a>

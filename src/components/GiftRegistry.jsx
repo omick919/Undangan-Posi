@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Landmark, Wallet, Copy, Check } from 'lucide-react';
 
 // Impor gambar untuk background
-import coupleImage from '../../assets/1.jpeg';
 
 // Data hadiah/rekening
 const gifts = [
@@ -46,9 +45,7 @@ export default function GiftRegistry() {
     <section 
       id="gifts" 
       className="relative bg-cover bg-center py-20 md:py-28"
-      style={{ backgroundImage: `url(${coupleImage})` }}
     >
-      <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="relative container mx-auto px-4 text-white">
         <motion.h2 
@@ -63,12 +60,12 @@ export default function GiftRegistry() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center max-w-xl mx-auto mb-12"
+          className="text-center font-body max-w-xl mx-auto mb-12"
         >
           Doa restu Anda adalah hadiah terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, kami telah menyediakan beberapa cara di bawah ini.
         </motion.p>
 
-        <div className="mx-auto max-w-lg space-y-4">
+        <div className="font-body mx-auto max-w-lg space-y-4">
           {gifts.map((gift, index) => (
             // 2. Ubah tombol menjadi kartu "kaca"
             <motion.div
@@ -88,12 +85,12 @@ export default function GiftRegistry() {
                 </div>
                 <button
                   onClick={() => handleCopy(gift.number)}
-                  className="flex items-center gap-2 text-xs border border-white/30 rounded-full px-3 py-1.5 hover:bg-white/20 transition-colors"
+                  className="flex font-body items-center gap-2 text-xs border border-white/30 rounded-full px-3 py-1.5 hover:bg-white/20 transition-colors"
                 >
                   {/* 3. Tampilkan feedback saat disalin */}
                   {copied === gift.number ? (
                     <>
-                      <Check size={14} className="text-green-400" />
+                      <Check size={14} className=" text-green-400" />
                       Disalin!
                     </>
                   ) : (

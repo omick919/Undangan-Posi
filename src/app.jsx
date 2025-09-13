@@ -14,6 +14,8 @@ import Footer from './components/Footer';
 import FloatingNav from './components/FloatingNav';
 import InvitationCover from './components/InvitationCover';
 import Countdown from './components/Countdown';
+import MusicTogle from './components/MusicToggle';
+import GiftRegistry from './components/GiftRegistry';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +51,8 @@ function App() {
         <Story />
         <Gallery />
         <Location />
-        {/* Di sini kita teruskan target tanggal ke komponen Countdown */}
+        <MusicTogle />
+        <GiftRegistry />
         <Countdown target={weddingDate} />
         <Footer />
         {isOpen && <FloatingNav />}
