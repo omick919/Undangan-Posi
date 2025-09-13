@@ -34,7 +34,7 @@ export default function InvitationCover({ isOpen, onOpen }) {
 
   // Style untuk kedua panel agar menggunakan satu gambar yang sama
   const panelStyle = (position) => ({
-    backgroundImage: 'url(public/assets/Opening2.png)',
+    backgroundImage: 'url(/assets/10.png)',
     backgroundSize: '200% auto', 
     backgroundPosition: position, // Posisikan 'left' atau 'right'
     backgroundRepeat: 'no-repeat',
