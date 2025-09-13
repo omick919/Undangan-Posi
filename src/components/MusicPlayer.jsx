@@ -60,8 +60,7 @@ useEffect(() => {
         loop
         preload="auto"
         playsInline
-        autoPlay     // autoplay diizinkan karena muted default di bawah
-        muted        // akan dibuka saat shouldPlay true
+        autoPlay           
       />
       <button
         onClick={handleToggle}
