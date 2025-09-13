@@ -33,6 +33,9 @@ function App() {
     };
   }, [isOpen]);
 
+  // Target tanggal dan waktu untuk hitung mundur (Tahun-Bulan-TanggalTJam:Menit:Detik)
+  const weddingDate = "2025-10-19T10:00:00";
+
   return (
     <>
       {/* Latar belakang statis dirender di sini, di belakang segalanya */}
@@ -46,7 +49,8 @@ function App() {
         <Story />
         <Gallery />
         <Location />
-        <Countdown />
+        {/* Di sini kita teruskan target tanggal ke komponen Countdown */}
+        <Countdown target={weddingDate} />
         <Footer />
         {isOpen && <FloatingNav />}
       </main>
