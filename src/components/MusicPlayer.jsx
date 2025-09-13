@@ -55,7 +55,7 @@ export default function MusicPlayer({ shouldPlay }) {
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/bg-music2.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/public/assets/bg-music2.mp3" loop preload="auto" />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"

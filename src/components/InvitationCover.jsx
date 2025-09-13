@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 
+
 // Anda bisa mengganti nama mempelai di sini
 const brideName = "Poshie";
 const groomName = "Aji";
@@ -33,7 +34,7 @@ export default function InvitationCover({ isOpen, onOpen }) {
 
   // Style untuk kedua panel agar menggunakan satu gambar yang sama
   const panelStyle = (position) => ({
-  backgroundImage: `url(/assets/3.png)`,
+    backgroundImage: 'url(public/assets/Opening2.png)',
     backgroundSize: '200% auto', 
     backgroundPosition: position, // Posisikan 'left' atau 'right'
     backgroundRepeat: 'no-repeat',
