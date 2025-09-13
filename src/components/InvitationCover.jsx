@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import opening2 from '../../assets/Opening2.png';
+
 
 // Anda bisa mengganti nama mempelai di sini
 const brideName = "Poshie";
@@ -32,7 +34,7 @@ export default function InvitationCover({ isOpen, onOpen }) {
 
   // Style untuk kedua panel agar menggunakan satu gambar yang sama
   const panelStyle = (position) => ({
-    backgroundImage: "url('/assets/Opening2.png')", // Ganti dengan gambar latar Anda
+    backgroundImage: opening2, // Ganti dengan gambar latar Anda
     // Perbaikan: Buat lebar gambar 2x lipat dari panel, 
     // dan tinggi otomatis untuk menjaga rasio aspek (tidak gepeng).
     backgroundSize: '200% auto', 

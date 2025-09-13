@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
-
-// PENTING: Pastikan file musik Anda ada di folder `public/assets/`
-const musicSrc = '/assets/bg-music2.mp3'; 
+import bgMusic from '../../assets/bg-music2.mp3';
 
 export default function MusicPlayer({ shouldPlay }) {
   const audioRef = useRef(null);
@@ -57,7 +55,7 @@ export default function MusicPlayer({ shouldPlay }) {
 
   return (
     <>
-      <audio ref={audioRef} src={musicSrc} loop preload="auto" />
+      <audio ref={audioRef} src={bgMusic} loop preload="auto" />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"
