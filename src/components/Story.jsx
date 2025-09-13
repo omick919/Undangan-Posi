@@ -27,9 +27,9 @@ export default function Story() {
       className="relative py-20 md:py-28 bg-cover bg-center"
       
     >
-      {/* 2. Tambahkan div overlay semi-transparan untuk readability */}
-      <div className="absolute inset-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>
-
+      {/* Lapisan overlay */}
+      <div className="absolute inset-0 -z-10 "></div>
+      
       {/* 3. Tambahkan 'relative' pada container konten agar berada di atas overlay */}
       <div className="container mx-auto px-4 relative">
         

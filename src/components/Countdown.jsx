@@ -26,8 +26,7 @@ export default function Countdown({ target }) {
       id="countdown" 
       className="relative bg-cover bg-center py-20 md:py-28"
     >
-      <div className="absolute inset-0 bg-black/50"></div>
-      
+     
       <div className="relative container mx-auto px-4 text-center text-white">
         <motion.h2 
           initial={{ opacity: 0, y: -30 }}

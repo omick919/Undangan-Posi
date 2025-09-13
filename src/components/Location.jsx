@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 
-// Impor gambar yang akan digunakan
-import coupleImage from '../../assets/5.jpeg';
 
 export default function Location() {
   const gmapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63372.39713624174!2d107.50955575820309!3d-6.917502799999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e608cfa0c18d%3A0xbe7da28b948823b!2sSudirman%20Grand%20Ballroom!5e0!3m2!1sen!2sid!4v1751078481421!5m2!1sen!2sid";
@@ -12,9 +10,7 @@ export default function Location() {
     <section 
       id="location" 
       className="relative bg-cover bg-center py-20 md:py-28"
-      style={{ backgroundImage: `url(${coupleImage})` }}
     >
-      <div className="absolute inset-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>
 
       <div className="relative container mx-auto px-4">
         <motion.h2 

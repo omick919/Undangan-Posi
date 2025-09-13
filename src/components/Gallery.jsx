@@ -25,7 +25,6 @@ export default function Gallery() {
       id="gallery" 
       className="relative bg-cover bg-center py-20 md:py-28"
     >
-      <div className="absolute inset-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>
 
       <div className="relative container mx-auto px-4">
         <motion.h2 
