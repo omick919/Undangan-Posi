@@ -12,7 +12,7 @@ import couplePhoto6 from '../../assets/5.jpeg';
 import couplePhoto7 from '../../assets/6.jpeg';
  // Ganti dengan foto Anda
 
-const slideImages = [couplePhoto1, couplePhoto2, couplePhoto3];
+const slideImages = [couplePhoto1, couplePhoto2, couplePhoto3, couplePhoto4, couplePhoto5, couplePhoto6, couplePhoto7];
 
 export default function Verse() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
