@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 // 1. Path gambar latar belakang.
-import invitationBackground from '../../assets/3.png'; 
 
 // 2. Ganti path ini dengan foto mempelai yang sebenarnya.
 // Pastikan foto Anda ada di folder 'src/assets/'.
@@ -33,11 +32,6 @@ export default function Hero() {
       id="hero" 
       className="relative isolate min-h-screen flex items-center justify-center text-center py-20 px-4 overflow-hidden"
     >
-      {/* Latar Belakang */}
-      <div 
-        className="absolute inset-0 -z-20 bg-cover bg-center" 
-        style={{ backgroundImage: `url(${invitationBackground})` }} 
-      />
       
       {/* Lapisan overlay */}
       <div className="absolute inset-0 -z-10 bg-black/20"></div>
@@ -51,9 +45,6 @@ export default function Hero() {
       >
         {/* Konten di dalam kotak */}
         <div className="flex flex-col items-center text-stone-800">
-
-          {/* Ayat Ar-Rum sudah dipindahkan ke komponen Verse.jsx */}
-
           <motion.p variants={itemVariants} className="font-body text-lg">
             Bismillahirrahmanirrahim<br/>
             Assalamu'alaikum Warahmatullahi Wabarakatuh

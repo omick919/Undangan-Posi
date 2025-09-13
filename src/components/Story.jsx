@@ -25,7 +25,7 @@ export default function Story() {
     <section 
       id="story" 
       className="relative py-20 md:py-28 bg-cover bg-center"
-      style={{ backgroundImage: `url(${coupleImage})` }}
+      
     >
       {/* 2. Tambahkan div overlay semi-transparan untuk readability */}
       <div className="absolute inset-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>

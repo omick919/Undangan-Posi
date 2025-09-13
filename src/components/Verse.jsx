@@ -1,66 +1,71 @@
 import { motion } from 'framer-motion';
-// Menggunakan background dan foto yang sama dengan Hero
-import invitationBackground from '../../assets/3.png'; 
-import bridePhoto from '../../assets/Foto Wanita.jpeg';
-import groomPhoto from '../../assets/Foto Pria.jpeg';
+// 1. Ganti path ini dengan foto bersama Anda.
+// Pastikan foto sudah ada di folder 'src/assets/'.
+import couplePhoto from '../../assets/2.jpeg'; // FOTO BERSAMA
 
 export default function Verse() {
   const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    },
+  };
+
+  const textVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3, delayChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut" } }
+      transition: {
+        delay: 0.4, // Teks akan muncul sedikit setelah foto
+        duration: 0.8,
+      },
+    },
   };
 
   return (
-    <section 
-      id="verse" 
-      className="relative isolate min-h-screen flex items-center justify-center text-center py-20 px-4 overflow-hidden"
+    <section
+      id="verse"
+      className="min-h-screen flex items-center justify-center text-center py-10 px-4 md:px-8"
     >
-      {/* Latar Belakang & Overlay (Sama seperti Hero) */}
-      <div 
-        className="absolute inset-0 -z-20 bg-cover bg-center" 
-        style={{ backgroundImage: `url(${invitationBackground})` }} 
-      />
-      <div className="absolute inset-0 -z-10 bg-black/20"></div>
-
-      {/* Konten Utama */}
-      <motion.div 
-        className="flex flex-col items-center max-w-3xl"
+      <motion.div
+        className="flex flex-col items-center w-full"
         initial="hidden"
         whileInView="visible" // Animasi akan berjalan saat di-scroll ke bagian ini
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
-        {/* Foto Berdampingan */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-8">
-          <div className="w-40 h-56 rounded-xl overflow-hidden border-4 border-white/50 shadow-lg mx-auto">
-            <img src={bridePhoto} alt="Mempelai Wanita" className="w-full h-full object-cover" />
-          </div>
-          <div className="w-40 h-56 rounded-xl overflow-hidden border-4 border-white/50 shadow-lg mx-auto">
-            <img src={groomPhoto} alt="Mempelai Pria" className="w-full h-full object-cover" />
-          </div>
-        </motion.div>
-        
-        {/* Kotak putih transparan untuk ayat */}
-        <motion.div 
-          variants={itemVariants} 
-          className="bg-white/25 backdrop-blur-md rounded-xl p-8 shadow-lg"
-        >
-          <div className="font-body text-sm italic leading-relaxed text-stone-700">
-            <p>Dan di antara tanda-tanda kekuasaan-Nya, ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri,</p>
-            <p>supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu</p>
-            <p>rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat</p>
-            <p>tanda-tanda bagi kaum yang berfikir.</p>
-            <p className="mt-2">(QS. Arrum, 21)</p>
-          </div>
-        </motion.div>
+        {/* Kontainer untuk Foto dan Teks - UKURAN HAMPIR PENUH */}
+        <div className="relative w-full max-w-4xl h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-8 border-white/50">
+          <img
+            src={couplePhoto}
+            alt="Poshie & Aji"
+            className="w-full h-full object-cover"
+          />
+
+          {/* Kotak Teks di Atas Foto - TANPA BLUR */}
+          <motion.div
+            className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/50 via-black/20 to-transparent flex items-end p-8"
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
+          >
+            <div className="font-body text-sm md:text-base italic leading-relaxed text-white [text-shadow:_1px_1px_3px_rgba(0,0,0,0.5)]">
+              <p>
+                "Dan di antara tanda-tanda kekuasaan-Nya, ialah Dia menciptakan
+                untukmu isteri-isteri dari jenismu sendiri, supaya kamu
+                cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya
+                diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian
+                itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
+              </p>
+              <p className="mt-4 font-semibold not-italic">(QS. Ar-Rum: 21)</p>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
