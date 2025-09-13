@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import opening2 from '../../assets/Opening2.png';
+import opening2 from '../../assets/3.png';
 
 
 // Anda bisa mengganti nama mempelai di sini
