@@ -43,7 +43,7 @@ export default function Location() {
               href={gmapsShareLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-6 w-full text-center px-6 py-3 bg-pink-500 text-white font-semibold font-body rounded-full shadow-lg hover:bg-red-600 transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-amber-800/80 text-white font-body text-sm rounded-full py-3 px-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-amber-700 hover:scale-105"
             >
               Buka Peta
             </a>
