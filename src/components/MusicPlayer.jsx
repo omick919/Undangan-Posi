@@ -54,7 +54,15 @@ useEffect(() => {
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/11.mp3?v=3" loop preload="auto" playsInline />
+       <audio
+        ref={audioRef}
+        src="/assets/11.mp3?v=4"  // atau /assets/bg-music2.mp3?v=4
+        loop
+        preload="auto"
+        playsInline
+        autoPlay     // autoplay diizinkan karena muted default di bawah
+        muted        // akan dibuka saat shouldPlay true
+      />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"
