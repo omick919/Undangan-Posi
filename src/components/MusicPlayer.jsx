@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 // PENTING: Pastikan file musik Anda ada di folder `public/assets/`
-const musicSrc = '../assets/bg-music.mp3'; 
+const musicSrc = '../assets/bg-music1.mp3'; 
 
 export default function MusicPlayer({ shouldPlay }) {
   const audioRef = useRef(null);

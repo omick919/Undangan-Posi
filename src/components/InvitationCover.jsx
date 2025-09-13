@@ -32,7 +32,7 @@ export default function InvitationCover({ isOpen, onOpen }) {
 
   // Style untuk kedua panel agar menggunakan satu gambar yang sama
   const panelStyle = (position) => ({
-    backgroundImage: "url('src/assets/Opening.png')", // Ganti dengan gambar latar Anda
+    backgroundImage: "url('../../assets/Opening1.png')", // Ganti dengan gambar latar Anda
     // Perbaikan: Buat lebar gambar 2x lipat dari panel, 
     // dan tinggi otomatis untuk menjaga rasio aspek (tidak gepeng).
     backgroundSize: '200% auto', 
