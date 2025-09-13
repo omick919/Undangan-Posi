@@ -48,12 +48,13 @@ function App() {
       <main className={`transition-opacity duration-1000 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
         <Verse />
         <Hero />
-        <Story />
-        <Gallery />
+        <Countdown targetDate={weddingDate} />
         <Location />
-        <MusicTogle />
+        <RSVPForm />
+        <Gallery />
+        <Story />
         <GiftRegistry />
-        <Countdown target={weddingDate} />
+        <MusicTogle />
         <Footer />
         {isOpen && <FloatingNav />}
       </main>

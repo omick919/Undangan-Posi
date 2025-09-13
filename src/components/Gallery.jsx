@@ -10,9 +10,10 @@ import img2 from '../../assets/2.jpeg';
 import img3 from '../../assets/3.jpeg';
 import img4 from '../../assets/4.jpeg';
 import img5 from '../../assets/5.jpeg';
-import img6 from '../../assets/6.jpeg'; // Menambah 1 gambar agar pas di grid 3 kolom
+import img6 from '../../assets/6.jpeg';
+import img7 from '../../assets/Foto Cincin.jpeg'; // Menambah 1 gambar agar pas di grid 3 kolom
 
-const images = [img1, img2, img3, img4, img5, img6];
+const images = [img1, img2, img3, img4, img5, img6, img7];
 
 // Impor gambar untuk background
 

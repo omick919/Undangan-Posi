@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 
 export default function Location() {
-  const gmapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63372.39713624174!2d107.50955575820309!3d-6.917502799999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e608cfa0c18d%3A0xbe7da28b948823b!2sSudirman%20Grand%20Ballroom!5e0!3m2!1sen!2sid!4v1751078481421!5m2!1sen!2sid";
-  const gmapsShareLink = "https://maps.app.goo.gl/k1hJvBgQcTjgmFyA7";
+  const gmapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.2008190004544!2d111.03155657482093!3d-6.745343893251014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d3ad5bf58b67%3A0x256472e33348a875!2sKORPRI%20Building%20Pati!5e0!3m2!1sen!2sid!4v1757748687417!5m2!1sen!2sid";
+  const gmapsShareLink = "https://maps.app.goo.gl/2WcDg5sx5PML68FFA";
 
   return (
     // 1. Tambahkan background gambar pada section utama
@@ -34,10 +34,10 @@ export default function Location() {
           {/* 3. Kartu Info dengan posisi absolut di layar besar */}
           <div className="absolute top-0 left-0 z-10 p-6 md:p-8 w-full h-full md:w-1/3 md:h-auto bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg flex flex-col justify-center">
             <h3 className="text-2xl font-bold font-display text-gray-800 dark:text-white">
-              Sudirman Grand Ballroom
+              Gedung Korpri Pati
             </h3>
             <p className="mt-2 text-gray-600 font-body dark:text-gray-300">
-              Jl. Jend. Sudirman No. 620, Dungus Cariang, Kec. Andir, Kota Bandung, Jawa Barat 40183
+              Jl. AKBP Agil Kusumadya No. 17A, Ngarus, Kec. Pati, Kab. Pati, Jawa Tengah
             </p>
             <a
               href={gmapsShareLink}

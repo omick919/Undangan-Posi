@@ -1,98 +1,98 @@
 import { motion } from 'framer-motion';
 import { FaInstagram, FaMale, FaFemale } from 'react-icons/fa';
 
-import coupleImage from '../../assets/1.jpeg';
-import groomImage from '../../assets/Foto Pria.jpeg';
-import brideImage from '../../assets/Foto Wanita.jpeg';
+// Ganti nama file foto jika perlu
+import groomImage from '../../assets/8.jpeg';
+import brideImage from '../../assets/9.jpeg';
 
-// Data untuk timeline cerita (tidak berubah)
+// Data untuk timeline cerita
 const storyData = [
-    { date: '14 Februari 2021', title: 'Pertama Bertemu', description: 'Kami pertama kali bertemu di sebuah acara komunitas dan langsung merasa ada kecocokan.' },
-    { date: '10 Oktober 2021', title: 'Hubungan Dimulai', description: 'Setelah beberapa bulan saling mengenal, kami memutuskan untuk memulai perjalanan cinta kami bersama.' },
-    { date: '25 Desember 2024', title: 'Lamaran Romantis', description: 'Di bawah langit senja, Aldi melamar Salma dan memulai babak baru dalam hidup kami.' },
-    { date: '17 Agustus 2025', title: 'Hari Pernikahan', description: 'Kami akan mengikat janji suci dan merayakannya bersama orang-orang terkasih.' },
+  { date: 'Awal Mula', title: 'Pertemuan Pertama', description: 'Masa kecil mempertemukan kami di satu kompleks sekolah. Meski berbeda SD, takdir sudah diam-diam menyiapkan kisah indah ini.' },
+  { date: 'Masa SMA', title: 'Bertemu Kembali', description: 'Di SMA, semesta menghadirkan kami lagi. Senyum sederhana kala itu tumbuh menjadi rasa yang tak terhapuskan.' },
+  { date: '12 April 2014', title: 'Awal Kisah Cinta', description: 'Hari itu menjadi saksi ketika kami sepakat untuk saling menggenggam hati. Dari sinilah perjalanan cinta kami benar-benar dimulai.' },
+  { date: '18 Juni 2025', title: 'Tunangan Bahagia', description: 'Dengan penuh syukur, kami melangkah ke tahap baru. Janji suci pertunangan menjadi pengikat kuat untuk menatap masa depan bersama.' },
+  { date: '19 Oktober 2025', title: 'Hari Pernikahan', description: 'Hari yang dinanti tiba. Di hadapan keluarga dan sahabat, kami akan merajut janji abadi dan memulai babak baru sebagai suami istri.' },
 ];
 
-// Data untuk profil mempelai (tidak berubah)
+// Data untuk profil mempelai
 const profilesData = [
-  { name: 'Aldi Pratama', icon: <FaMale className="text-2xl text-blue-500" />, image: groomImage, description: 'Putra dari Bapak John Doe & Ibu Jane Doe. Aldi adalah seorang software engineer yang hobi bersepeda dan fotografi.', instagram: 'https://instagram.com/aldi' },
-  { name: 'Salma Putri', icon: <FaFemale className="text-2xl text-pink-500" />, image: brideImage, description: 'Putri dari Bapak Michael Smith & Ibu Sarah Smith. Salma adalah seorang desainer grafis yang mencintai seni dan traveling.', instagram: 'https://instagram.com/salma' },
+  { name: 'Hikmah Prastyo Aji, S.H', image: groomImage, description: 'Putra dari Bpk. Ponco Raharjo & Ibu Ruswati', instagram: 'https://instagram.com/aldi', icon: <FaMale /> },
+  { name: 'Desthari Pasaning Ratna Furi, S.H', image: brideImage, description: 'Putri dari Bpk. Prieyo Soedarmanto & Ibu Emy Sulistyowati', instagram: 'https://instagram.com/salma', icon: <FaFemale /> },
 ];
 
 export default function Story() {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  };
+
   return (
-    // 1. Tambahkan style untuk background & 'relative' pada section utama
-    <section 
-      id="story" 
-      className="relative py-20 md:py-28 bg-cover bg-center"
-      
-    >
-      {/* Lapisan overlay */}
-      <div className="absolute inset-0 -z-10 "></div>
-      
-      {/* 3. Tambahkan 'relative' pada container konten agar berada di atas overlay */}
-      <div className="container mx-auto px-4 relative">
+    <section id="story" className="relative isolate py-20 px-4">
+      <div className="bg-white/25 backdrop-blur-md rounded-xl p-6 md:p-10 shadow-lg max-w-4xl mx-auto">
         
-        {/* === Bagian Our Story === */}
-        <div className="text-center mb-16">
-          <motion.h2 initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-4xl md:text-5xl font-display text-gray-800 dark:text-white">
+        {/* === Bagian Perjalanan Cinta === */}
+        <div className="text-center mb-12">
+          <motion.h2 
+            className="font-title text-5xl md:text-6xl text-amber-800"
+            initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+          >
             Perjalanan Cinta Kami
           </motion.h2>
         </div>
-<div className="relative max-w-2xl mx-auto">
-  {/* Garis vertikal tetap sama */}
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-0.5 bg-pink-200 dark:bg-gray-600"></div>
-  
-  {storyData.map((item, index) => (
-    <motion.div
-      key={index}
-      className="relative mb-12" // Sedikit tambah margin bottom
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Lingkaran nomor sekarang diposisikan ABSOLUT di tengah */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 flex items-center justify-center size-8 rounded-full bg-pink-500 text-white shadow">
-        {index + 1}
-      </div>
-      <div
-        className={`w-5/12 p-4 bg-gray-50/70 dark:bg-gray-700/70 backdrop-blur-md rounded-lg shadow-md
-          ${index % 2 === 0 ? 'mr-auto text-right' : 'ml-auto text-left'}`
-        }
-      >
-        <p className="text-sm font-semibold text-pink-500 dark:text-pink-400">{item.date}</p>
-        <h3 className="text-xl font-bold text-gray-800 dark:text-white mt-1">{item.title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">{item.description}</p>
-      </div>
-    </motion.div>
-  ))}
-</div>
 
-        {/* 4. Parallax separator dihapus karena fungsinya sudah digantikan oleh background utama section */}
+        <div className="space-y-8">
+          {storyData.map((item, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col items-center text-center"
+              initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+            >
+              <p className="font-body font-semibold text-amber-800">{item.date}</p>
+              <h3 className="font-title text-4xl text-stone-800 mt-1">{item.title}</h3>
+              <p className="font-body text-stone-700 mt-2 max-w-md">{item.description}</p>
+              {/* Tambahkan pemisah dekoratif kecuali untuk item terakhir */}
+              {index < storyData.length - 1 && (
+                <div className="w-20 h-px bg-stone-400/50 my-6"></div>
+              )}
+            </motion.div>
+          ))}
+        </div>
 
         {/* === Bagian Profil Mempelai === */}
-        <div className="text-center mt-28 mb-16">
-          <motion.h2 initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-4xl md:text-5xl font-display text-gray-800 dark:text-white">
+        <div className="text-center mt-20 mb-12">
+          <motion.h2 
+            className="font-title text-5xl md:text-6xl text-amber-800"
+            initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+          >
             Mempelai
           </motion.h2>
         </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {profilesData.map((profile, index) => (
-            <motion.div key={index} className="flex flex-col items-center text-center p-6 bg-gray-50/70 dark:bg-gray-700/70 backdrop-blur-md rounded-2xl shadow-lg" initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: index * 0.2 }}>
-              <img src={profile.image} alt={profile.name} className="w-40 h-40 object-cover rounded-full border-4 border-white dark:border-gray-600 shadow-md mb-4"/>
-              <div className="flex items-center gap-2">
-                {profile.icon}
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{profile.name}</h3>
+            <motion.div 
+              key={index} 
+              className="flex flex-col items-center text-center"
+              initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+            >
+              <img src={profile.image} alt={profile.name} className="w-40 h-40 object-cover rounded-full border-4 border-white/80 shadow-md mb-4"/>
+              <div className="flex items-center gap-2 text-stone-800">
+                <h3 className="font-title text-4xl">{profile.name}</h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm">{profile.description}</p>
-              <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 text-pink-500 hover:text-pink-600 transition-colors">
+              <p className="font-body text-stone-700 mt-2 text-sm">{profile.description}</p>
+              <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 text-amber-800/80 hover:text-amber-800 transition-colors">
                 <FaInstagram className="text-3xl" />
               </a>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
+
