@@ -54,7 +54,7 @@ useEffect(() => {
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/11.mp3?=v2" loop preload="auto" />
+      <audio ref={audioRef} src="/assets/11.mp3?v=3" loop preload="auto" playsInline />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"
