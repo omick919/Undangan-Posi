@@ -39,22 +39,22 @@ export default function Verse() {
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
-        {/* Kontainer untuk Foto dan Teks - UKURAN HAMPIR PENUH */}
-        <div className="relative w-full max-w-4xl h-[80vh] rounded-2xl overflow-hidden shadow-2xl border-8 border-white/50">
+        {/* Kontainer untuk Foto - UKURAN MAKSIMAL */}
+        <div className="relative w-full max-w-6xl h-[85vh] rounded-2xl overflow-hidden shadow-2xl border-8 border-white/50">
           <img
             src={couplePhoto}
             alt="Poshie & Aji"
             className="w-full h-full object-cover"
           />
 
-          {/* Kotak Teks di Atas Foto - TANPA BLUR */}
+          {/* Kotak Teks di Atas Foto - FONT LEBIH JELAS */}
           <motion.div
-            className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/50 via-black/20 to-transparent flex items-end p-8"
+            className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end p-8 md:p-12"
             initial="hidden"
             animate="visible"
             variants={textVariants}
           >
-            <div className="font-body text-sm md:text-base italic leading-relaxed text-white [text-shadow:_1px_1px_3px_rgba(0,0,0,0.5)]">
+            <div className="font-body text-base md:text-lg italic leading-relaxed text-white [text-shadow:_2px_2px_5px_rgba(0,0,0,0.7)]">
               <p>
                 "Dan di antara tanda-tanda kekuasaan-Nya, ialah Dia menciptakan
                 untukmu isteri-isteri dari jenismu sendiri, supaya kamu

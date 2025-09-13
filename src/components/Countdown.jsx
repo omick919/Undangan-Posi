@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { motion } from 'framer-motion';
 
-import coupleImage from '../../assets/1.jpeg'; 
 
 export default function Countdown({ target }) {
   const [left, setLeft] = useState({});
@@ -26,7 +25,6 @@ export default function Countdown({ target }) {
     <section 
       id="countdown" 
       className="relative bg-cover bg-center py-20 md:py-28"
-      style={{ backgroundImage: `url(${coupleImage})` }}
     >
       <div className="absolute inset-0 bg-black/50"></div>
       

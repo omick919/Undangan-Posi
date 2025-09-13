@@ -34,11 +34,11 @@ export default function Hero() {
     >
       
       {/* Lapisan overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/20"></div>
+      <div className="absolute inset-0 -z-10 "></div>
 
       {/* Konten Utama sekarang dibungkus kotak transparan */}
       <motion.div 
-        className="bg-white/25 backdrop-blur-md rounded-xl p-6 shadow-lg max-w-3xl"
+        className="bg-white/25 backdrop-blur-md rounded-xl p-6 max-w-3xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

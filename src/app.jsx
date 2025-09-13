@@ -13,6 +13,7 @@ import RSVPForm from './components/RSVPForm';
 import Footer from './components/Footer';
 import FloatingNav from './components/FloatingNav';
 import InvitationCover from './components/InvitationCover';
+import Countdown from './components/Countdown';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,7 @@ function App() {
         <Story />
         <Gallery />
         <Location />
-        <RSVPForm />
+        <Countdown />
         <Footer />
         {isOpen && <FloatingNav />}
       </main>

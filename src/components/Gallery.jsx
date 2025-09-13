@@ -15,7 +15,6 @@ import img6 from '../../assets/6.jpeg'; // Menambah 1 gambar agar pas di grid 3 
 const images = [img1, img2, img3, img4, img5, img6];
 
 // Impor gambar untuk background
-import coupleImage from '../../assets/4.jpeg';
 
 export default function Gallery() {
   const [active, setActive] = useState(null);
@@ -25,7 +24,6 @@ export default function Gallery() {
     <section 
       id="gallery" 
       className="relative bg-cover bg-center py-20 md:py-28"
-      style={{ backgroundImage: `url(${coupleImage})` }}
     >
       <div className="absolute inset-0 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>
 
