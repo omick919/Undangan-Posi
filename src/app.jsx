@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Impor komponen baru
+// Impor komponen
 import StaticBackground from './components/StaticBackground';
-
-// Impor semua komponen halaman Anda
 import Hero from './components/Hero';
 import Verse from './components/Verse';
 import Story from './components/Story';
@@ -14,7 +13,7 @@ import Footer from './components/Footer';
 import FloatingNav from './components/FloatingNav';
 import InvitationCover from './components/InvitationCover';
 import Countdown from './components/Countdown';
-import MusicTogle from './components/MusicToggle';
+import MusicPlayer from './components/MusicPlayer'; // Memastikan MusicPlayer yang diimpor
 import GiftRegistry from './components/GiftRegistry';
 
 function App() {
@@ -25,39 +24,42 @@ function App() {
   };
 
   useEffect(() => {
-    if (!isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
 
-  // Target tanggal dan waktu untuk hitung mundur (Tahun-Bulan-TanggalTJam:Menit:Detik)
   const weddingDate = "2025-10-19T10:00:00";
 
   return (
     <>
-      {/* Latar belakang statis dirender di sini, di belakang segalanya */}
       <StaticBackground />
       
       <InvitationCover isOpen={isOpen} onOpen={handleOpenInvitation} />
       
-      <main className={`transition-opacity duration-1000 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
-        <Verse />
-        <Hero />
-        <Countdown targetDate={weddingDate} />
-        <Location />
-        <RSVPForm />
-        <Gallery />
-        <Story />
-        <GiftRegistry />
-        <MusicTogle />
-        <Footer />
-        {isOpen && <FloatingNav />}
-      </main>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.main
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <Verse />
+            <Hero />
+            <Story />
+            <Countdown targetDate={weddingDate} />
+            <Gallery />
+            <Location />
+            <GiftRegistry />
+            <RSVPForm />
+            <Footer />           
+            <FloatingNav />
+            <MusicPlayer shouldPlay={isOpen} />
+          </motion.main>
+        )}
+      </AnimatePresence>
     </>
   );
 }

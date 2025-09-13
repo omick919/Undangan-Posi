@@ -1,96 +1,90 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-
-// Impor ikon dari lucide-react
 import { Landmark, Wallet, Copy, Check } from 'lucide-react';
-
-// Impor gambar untuk background
 
 // Data hadiah/rekening
 const gifts = [
   {
     name: 'BCA',
-    number: '0980997413', // Hilangkan tanda hubung agar mudah disalin
+    number: '0980997413',
     holder: 'Desthari Pasaning Ratna Furi',
-    icon: <Landmark className="w-8 h-8 text-blue-300" />,
-  },{
+    icon: <Landmark className="w-8 h-8 text-stone-700" />,
+  },
+  {
     name: 'BRI',
-    number: '006601069102504', // Hilangkan tanda hubung agar mudah disalin
+    number: '006601069102504',
     holder: 'Desthari Pasaning Ratna Furi',
-    icon: <Landmark className="w-8 h-8 text-blue-300" />,
+    icon: <Landmark className="w-8 h-8 text-stone-700" />,
   },
   {
     name: 'Gopay',
     number: '0895376357705',
-    holder: 'Desthari Pasaning Ratna Furi ',
-    icon: <Wallet className="w-8 h-8 text-blue-400" />,
+    holder: 'Desthari Pasaning Ratna Furi',
+    icon: <Wallet className="w-8 h-8 text-stone-700" />,
   },
 ];
 
 export default function GiftRegistry() {
-  // State untuk melacak nomor mana yang baru saja disalin
-  const [copied, setCopied] = useState('');
+  const [copiedNumber, setCopiedNumber] = useState('');
 
   const handleCopy = (numberToCopy) => {
     navigator.clipboard.writeText(numberToCopy);
-    setCopied(numberToCopy);
-    // Setelah 2 detik, hilangkan status "copied"
+    setCopiedNumber(numberToCopy);
     setTimeout(() => {
-      setCopied('');
-    }, 2000);
+      setCopiedNumber('');
+    }, 2000); // Reset status setelah 2 detik
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
 
   return (
-    // 1. Ganti background section
-    <section 
-      id="gifts" 
-      className="relative bg-cover bg-center py-20 md:py-28"
-    >
+    <section id="gifts" className="relative isolate py-20 px-4">
+      <div className="bg-white/25 backdrop-blur-md rounded-xl p-6 md:p-10 shadow-lg max-w-2xl mx-auto text-center">
+        <div className="text-stone-800">
 
-      <div className="relative container mx-auto px-4 text-white">
-        <motion.h2 
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          className="text-center text-4xl md:text-5xl font-display mb-4 [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.5)]"
-        >
-          Hadiah Kasih
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center font-body max-w-xl mx-auto mb-12"
-        >
-          Doa restu Anda adalah hadiah terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, kami telah menyediakan beberapa cara di bawah ini.
-        </motion.p>
+          <motion.h2 
+            className="font-title text-5xl md:text-6xl text-amber-800"
+            initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+          >
+            Hadiah Pernikahan
+          </motion.h2>
 
-        <div className="font-body mx-auto max-w-lg space-y-4">
-          {gifts.map((gift, index) => (
-            // 2. Ubah tombol menjadi kartu "kaca"
-            <motion.div
-              key={gift.name}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5"
-            >
-              <div className="flex items-center gap-4">
-                {gift.icon}
+          <motion.p 
+            className="font-body mt-4 max-w-xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.5 }} variants={itemVariants}
+          >
+            Doa restu Anda adalah hadiah terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, kami telah menyediakan beberapa cara di bawah ini.
+          </motion.p>
+          
+          <motion.div 
+            className="mt-8 space-y-4"
+            initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={itemVariants}
+          >
+            {gifts.map((gift) => (
+              <div
+                key={gift.name}
+                className="bg-white/20 p-4 rounded-lg shadow-inner flex items-center gap-4 text-left"
+              >
+                <div className="flex-shrink-0">{gift.icon}</div>
                 <div className="flex-grow">
-                  <div className="font-bold text-lg">{gift.name}</div>
-                  <div className="font-mono tracking-widest text-base">{gift.number}</div>
-                  <div className="text-sm text-gray-300">a/n {gift.holder}</div>
+                  <p className="font-body font-bold text-lg">{gift.name}</p>
+                  <p className="font-mono tracking-wider text-stone-700">{gift.number}</p>
+                  <p className="font-body text-xs text-stone-600">a/n {gift.holder}</p>
                 </div>
                 <button
                   onClick={() => handleCopy(gift.number)}
-                  className="flex font-body items-center gap-2 text-xs border border-white/30 rounded-full px-3 py-1.5 hover:bg-white/20 transition-colors"
+                  className="flex-shrink-0 flex items-center gap-2 text-xs font-body border border-stone-400/50 rounded-full px-3 py-1.5 hover:bg-white/20 transition-colors"
                 >
-                  {/* 3. Tampilkan feedback saat disalin */}
-                  {copied === gift.number ? (
+                  {copiedNumber === gift.number ? (
                     <>
-                      <Check size={14} className=" text-green-400" />
+                      <Check size={14} className="text-green-600" />
                       Disalin!
                     </>
                   ) : (
@@ -101,10 +95,12 @@ export default function GiftRegistry() {
                   )}
                 </button>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
+          
         </div>
       </div>
     </section>
   );
 }
+

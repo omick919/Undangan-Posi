@@ -3,13 +3,17 @@ import { motion } from 'framer-motion';
 import { Send, Loader2, CheckCircle, AlertTriangle } from 'lucide-react';
 
 export default function RSVPForm() {
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbw1ooYiJ8QZM9dNKg96kFHwIvnkH8p0RG6AvNmUtdxIoPbIEaQWZoB_p0AjhgCOuP1FVg/exec';
+  // --- PENTING: Ganti nilai di bawah ini dengan App ID & Access Key Anda dari AppSheet ---
+  const APP_ID = "ebb17aa1-bf07-4b98-9495-7350fe1a4141";
+  const ACCESS_KEY = "V2-a4Wrr-jSA32-hZxwN-7eMLe-C158Q-hARJN-edHcy-YLThR";
+  const TABLE_NAME = "RSVP-POSI"; // Ganti jika nama tabel/sheet Anda berbeda
+  // --------------------------------------------------------------------
 
   const [formData, setFormData] = useState({
-    Nama: '',
-    Kehadiran: 'Hadir',
-    JumlahTamu: 1,
-    Ucapan: ''
+    nama: '',
+    kehadiran: 'Hadir',
+    jumlahTamu: 1,
+    ucapan: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('idle');
@@ -19,9 +23,9 @@ export default function RSVPForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.Nama) {
+    if (!formData.nama) {
       alert('Nama wajib diisi.');
       return;
     }
@@ -29,31 +33,49 @@ export default function RSVPForm() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    const dataToSubmit = new FormData();
-    for (const key in formData) {
-      dataToSubmit.append(key, formData[key]);
+    // AppSheet API memerlukan format body yang spesifik
+    const bodyPayload = {
+      Action: "Add",
+      Properties: {},
+      Rows: [
+        {
+          ...formData,
+          timestamp: new Date().toISOString(),
+          // Pastikan jumlahTamu dikirim sebagai angka jika diperlukan
+          jumlahTamu: formData.kehadiran === 'Hadir' ? Number(formData.jumlahTamu) : null,
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch(
+        `https://api.appsheet.com/api/v2/apps/${APP_ID}/tables/${TABLE_NAME}/Action`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'ApplicationAccessKey': ACCESS_KEY
+          },
+          body: JSON.stringify(bodyPayload)
+        }
+      );
+
+      if (!response.ok) {
+        // Jika server merespons dengan error, lemparkan error tersebut
+        const errorData = await response.json();
+        throw new Error(errorData.Message || 'Gagal mengirim data ke AppSheet.');
+      }
+
+      console.log('Success!', await response.json());
+      setSubmitStatus('success');
+      setFormData({ nama: '', kehadiran: 'Hadir', jumlahTamu: 1, ucapan: '' });
+
+    } catch (error) {
+      console.error('Error!', error.message);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    // Logika fetch yang diperbarui
-    fetch(scriptURL, { method: 'POST', body: dataToSubmit })
-      .then(response => {
-        // Karena kebijakan CORS Google, kita tidak bisa membaca responsnya.
-        // Tapi jika fetch tidak error di sini, kita anggap sukses.
-        console.log('Success!', response);
-        setSubmitStatus('success');
-        setFormData({ Nama: '', Kehadiran: 'Hadir', JumlahTamu: 1, Ucapan: '' });
-      })
-      .catch(error => {
-        // PENTING: Error ini SANGAT MUNGKIN TERJADI karena CORS,
-        // meskipun data sudah berhasil dikirim. Kita akan anggap ini sebagai sukses
-        // untuk memberikan pengalaman pengguna yang baik.
-        console.warn('Error caught, but likely a false alarm due to CORS:', error.message);
-        setSubmitStatus('success'); // Anggap sukses!
-        setFormData({ Nama: '', Kehadiran: 'Hadir', JumlahTamu: 1, Ucapan: '' });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
   };
   
   const itemVariants = {
@@ -85,15 +107,14 @@ export default function RSVPForm() {
           </motion.p>
           
           <motion.form 
-            name="submit-to-google-sheet"
             onSubmit={handleSubmit}
-            className="space-y-4 text-left"
+            className="font-body space-y-4 text-left"
             initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={itemVariants}
           >
             {/* Input Nama */}
             <div>
-              <label htmlFor="Nama" className="block font-body text-sm font-medium">Nama Anda</label>
-              <input type="text" name="Nama" id="Nama" required value={formData.Nama} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800" />
+              <label htmlFor="nama" className="block font-body text-sm font-medium">Nama Anda</label>
+              <input type="text" name="nama" id="nama" required value={formData.nama} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800" />
             </div>
 
             {/* Pilihan Kehadiran */}
@@ -101,28 +122,28 @@ export default function RSVPForm() {
               <label className="block font-body text-sm font-medium">Konfirmasi Kehadiran</label>
               <div className="mt-2 flex gap-4">
                 <label className="inline-flex items-center">
-                  <input type="radio" name="Kehadiran" value="Hadir" checked={formData.Kehadiran === 'Hadir'} onChange={handleChange} className="text-amber-800 focus:ring-amber-800" />
+                  <input type="radio" name="kehadiran" value="Hadir" checked={formData.kehadiran === 'Hadir'} onChange={handleChange} className="text-amber-800 focus:ring-amber-800" />
                   <span className="ml-2 font-body">Ya, saya akan hadir</span>
                 </label>
                 <label className="inline-flex items-center">
-                  <input type="radio" name="Kehadiran" value="Tidak Hadir" checked={formData.Kehadiran === 'Tidak Hadir'} onChange={handleChange} className="text-amber-800 focus:ring-amber-800" />
+                  <input type="radio" name="kehadiran" value="Tidak Hadir" checked={formData.kehadiran === 'Tidak Hadir'} onChange={handleChange} className="text-amber-800 focus:ring-amber-800" />
                   <span className="ml-2 font-body">Maaf, tidak bisa hadir</span>
                 </label>
               </div>
             </div>
 
             {/* Jumlah Tamu (jika hadir) */}
-            {formData.Kehadiran === 'Hadir' && (
+            {formData.kehadiran === 'Hadir' && (
               <div>
-                <label htmlFor="JumlahTamu" className="block font-body text-sm font-medium">Jumlah Tamu (termasuk Anda)</label>
-                <input type="number" name="JumlahTamu" id="JumlahTamu" min="1" max="5" value={formData.JumlahTamu} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800" />
+                <label htmlFor="jumlahTamu" className="block font-body text-sm font-medium">Jumlah Tamu (termasuk Anda)</label>
+                <input type="number" name="jumlahTamu" id="jumlahTamu" min="1" max="5" value={formData.jumlahTamu} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800" />
               </div>
             )}
 
             {/* Ucapan & Doa */}
             <div>
-              <label htmlFor="Ucapan" className="block font-body text-sm font-medium">Ucapan & Doa</label>
-              <textarea name="Ucapan" id="Ucapan" rows="4" value={formData.Ucapan} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800"></textarea>
+              <label htmlFor="ucapan" className="block font-body text-sm font-medium">Ucapan & Doa</label>
+              <textarea name="ucapan" id="ucapan" rows="4" value={formData.ucapan} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800"></textarea>
             </div>
 
             {/* Tombol Kirim */}
@@ -132,17 +153,7 @@ export default function RSVPForm() {
                 disabled={isSubmitting}
                 className="w-full inline-flex items-center justify-center gap-2 bg-amber-800/80 text-white font-body text-sm rounded-full py-3 px-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-amber-700 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="animate-spin" size={18} />
-                    Mengirim...
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Kirim Konfirmasi
-                  </>
-                )}
+                {isSubmitting ? <><Loader2 className="animate-spin" size={18} /> Mengirim...</> : <><Send size={18} /> Kirim Konfirmasi</>}
               </button>
             </div>
 
@@ -153,7 +164,7 @@ export default function RSVPForm() {
                 <span>Terima kasih! Konfirmasi Anda telah berhasil dikirim.</span>
               </div>
             )}
-            {submitStatus === 'error' && ( // Ini mungkin tidak akan pernah muncul, tapi ada untuk jaga-jaga
+            {submitStatus === 'error' && (
               <div className="flex items-center gap-2 p-3 bg-red-100 text-red-800 rounded-md text-sm mt-4">
                 <AlertTriangle size={18} />
                 <span>Oops! Terjadi kesalahan. Silakan coba lagi.</span>
