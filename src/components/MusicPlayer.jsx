@@ -25,18 +25,17 @@ export default function MusicPlayer({ shouldPlay }) {
     };
   }, []); // Dijalankan hanya sekali saat komponen pertama kali dimuat
 
-  // Efek ini akan menangani perintah autoplay dari App.jsx
-  useEffect(() => {
-    const audio = audioRef.current;
-    // Jika ada perintah putar, audio sudah siap, dan sedang di-pause...
-    if (shouldPlay && audio && audio.paused) {
-      // ...maka putar musiknya.
-      audio.play().catch(error => {
-        // Gagal autoplay biasanya karena kebijakan browser, ini normal.
-        console.error("Autoplay failed:", error);
-      });
-    }
-  }, [shouldPlay]); // Dijalankan saat `shouldPlay` berubah
+useEffect(() => {
+  const a = audioRef.current;
+  if (!a) return;
+  console.log('MP3 currentSrc =', a.currentSrc);
+  const onErr = () => {
+    const map = {1:'aborted',2:'network',3:'decode',4:'src not supported'};
+    console.error('Audio error:', map[a.error?.code], 'currentSrc=', a.currentSrc);
+  };
+  a.addEventListener('error', onErr);
+  return () => a.removeEventListener('error', onErr);
+}, []);
 
   // Fungsi untuk tombol klik manual dari pengguna
   const handleToggle = () => {
@@ -55,7 +54,7 @@ export default function MusicPlayer({ shouldPlay }) {
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/11.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/assets/11.mp3?=v2" loop preload="auto" />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"
