@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
-import bgMusic from '../../assets/bg-music2.mp3';
+
 
 export default function MusicPlayer({ shouldPlay }) {
   const audioRef = useRef(null);
@@ -55,7 +55,7 @@ export default function MusicPlayer({ shouldPlay }) {
 
   return (
     <>
-      <audio ref={audioRef} src={bgMusic} loop preload="auto" />
+      <audio ref={audioRef} src="/assets/bg-music2.mp3" loop preload="auto" />
       <button
         onClick={handleToggle}
         aria-label="Toggle music"

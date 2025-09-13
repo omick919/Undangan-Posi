@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import opening2 from '../../assets/3.png';
 
 
 // Anda bisa mengganti nama mempelai di sini
@@ -34,7 +33,7 @@ export default function InvitationCover({ isOpen, onOpen }) {
 
   // Style untuk kedua panel agar menggunakan satu gambar yang sama
   const panelStyle = (position) => ({
-  backgroundImage: `url(${opening2})`,
+  backgroundImage: `url(/assets/3.png)`,
     backgroundSize: '200% auto', 
     backgroundPosition: position, // Posisikan 'left' atau 'right'
     backgroundRepeat: 'no-repeat',
