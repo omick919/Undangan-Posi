@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 // Impor komponen
 import StaticBackground from './components/StaticBackground';
@@ -15,6 +17,7 @@ import InvitationCover from './components/InvitationCover';
 import Countdown from './components/Countdown';
 import MusicPlayer from './components/MusicPlayer'; // Memastikan MusicPlayer yang diimpor
 import GiftRegistry from './components/GiftRegistry';
+import WishesList from './components/WishesList';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +57,7 @@ function App() {
             <Location />
             <GiftRegistry />
             <RSVPForm />
+            <WishesList />
             <Footer />           
             <FloatingNav />
             <MusicPlayer shouldPlay={isOpen} />

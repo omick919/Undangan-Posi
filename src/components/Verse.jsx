@@ -4,15 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 // 1. Impor semua gambar yang ingin Anda tampilkan di slideshow.
 // Pastikan semua gambar ada di folder 'src/assets/'.
 import couplePhoto1 from '../../assets/Foto Cincin.jpeg';
-import couplePhoto2 from '../../assets/1.jpeg'; // Ganti dengan foto Anda
-import couplePhoto3 from '../../assets/2.jpeg';
-import couplePhoto4 from '../../assets/3.jpeg';
-import couplePhoto5 from '../../assets/4.jpeg';
-import couplePhoto6 from '../../assets/5.jpeg';
-import couplePhoto7 from '../../assets/6.jpeg';
+
  // Ganti dengan foto Anda
 
-const slideImages = [couplePhoto1, couplePhoto2, couplePhoto3, couplePhoto4, couplePhoto5, couplePhoto6, couplePhoto7];
+const slideImages = [couplePhoto1];
 
 export default function Verse() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
