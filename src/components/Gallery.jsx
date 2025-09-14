@@ -10,10 +10,9 @@ import img3 from '../../assets/3.jpeg';
 import img4 from '../../assets/4.jpeg';
 import img5 from '../../assets/5.jpeg';
 import img6 from '../../assets/6.jpeg';
-import img7 from '../../assets/Foto Cincin.jpeg';
 
 // Daftar gambar yang akan ditampilkan
-const images = [img1, img2, img3, img4, img5, img6, img7];
+const images = [img1, img2, img3, img4, img5, img6];
 
 export default function Gallery() {
   const [activeImage, setActiveImage] = useState(null);

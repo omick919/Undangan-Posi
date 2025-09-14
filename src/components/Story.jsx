@@ -16,8 +16,8 @@ const storyData = [
 
 // Data untuk profil mempelai
 const profilesData = [
-  { name: 'Hikmah Prastyo Aji, S.H', image: groomImage, description: 'Putra dari Bpk. Ponco Raharjo & Ibu Ruswati', instagram: 'https://instagram.com/aldi', icon: <FaMale /> },
-  { name: 'Desthari Pasaning Ratna Furi, S.H', image: brideImage, description: 'Putri dari Bpk. Prieyo Soedarmanto & Ibu Emy Sulistyowati', instagram: 'https://instagram.com/salma', icon: <FaFemale /> },
+  { name: 'Hikmah Prastyo Aji, S.H', image: groomImage, description: 'Putra dari Bpk. H. Ponco Raharjo & Ibu Hj. Ruswati', instagram: 'https://instagram.com/ajiprasetyaa', icon: <FaMale /> },
+  { name: 'Desthari Pasaning Ratna Furi, S.H', image: brideImage, description: 'Putri dari Bpk. Prieyo Soedarmanto & Ibu Emy Sulistyowati', instagram: 'https://instagram.com/poshierf', icon: <FaFemale /> },
 ];
 
 export default function Story() {

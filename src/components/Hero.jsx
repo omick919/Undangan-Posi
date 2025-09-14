@@ -109,7 +109,7 @@ export default function Hero() {
               Hikmah Prastyo Aji, S.H
             </h1>
             <p className="font-body text-sm mt-2">
-              Putra dari Bpk. Ponco Raharjo & Ibu Ruswati
+              Putra dari Bpk. H. Ponco Raharjo & Ibu Hj. Ruswati
             </p>
           </motion.div>
 

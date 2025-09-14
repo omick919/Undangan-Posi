@@ -136,7 +136,7 @@ export default function RSVPForm() {
             {formData.kehadiran === 'Hadir' && (
               <div>
                 <label htmlFor="jumlahTamu" className="block font-body text-sm font-medium">Jumlah Tamu (termasuk Anda)</label>
-                <input type="number" name="jumlahTamu" id="jumlahTamu" min="1" max="10" value={formData.jumlahTamu} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800 px-3 py-2" />
+                <input type="number" name="jumlahTamu" id="jumlahTamu" min="1" max="2" value={formData.jumlahTamu} onChange={handleChange} className="mt-1 block w-full bg-white/50 border-stone-400/50 rounded-md shadow-sm focus:ring-amber-800 focus:border-amber-800 px-3 py-2" />
               </div>
             )}
 
